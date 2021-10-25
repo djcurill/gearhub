@@ -1,7 +1,7 @@
-import config from './config';
-import express from 'express';
+const express = require('express');
+const config = require('./config/options.js').options;
 
-console.log(config);
+const port = process.env.PORT;
 
 const app = express();
 
@@ -9,6 +9,6 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 });
 
-app.listen(config.port, () => {
-  console.log(`Running server on port: ${config.port}`);
+app.listen(port, () => {
+  console.log(`Running server on port: ${port}`);
 });
