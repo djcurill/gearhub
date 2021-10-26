@@ -5,7 +5,7 @@ const connect = (url) => {
 };
 
 const buildConnectionString = (protocol, host, port, name) => {
-  return `${protocol}://${host}:{port}/${name}`;
+  return `${protocol}://${host}:${port}/${name}`;
 };
 
 module.exports = { connect, buildConnectionString };
