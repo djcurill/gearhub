@@ -8,4 +8,12 @@ const buildConnectionString = (protocol, host, port, name) => {
   return `${protocol}://${host}:${port}/${name}`;
 };
 
-module.exports = { connect, buildConnectionString };
+async function removeAllCollections() {
+  const collections = Object.keys(mongoose.connection.collections);
+  for (const collectionName of collections) {
+    const collection = mongoose.connection.collections[collectionName];
+    await collection.deleteMany();
+  }
+}
+
+module.exports = { connect, buildConnectionString, removeAllCollections };
