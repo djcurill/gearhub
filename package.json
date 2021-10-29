@@ -34,6 +34,9 @@
     "mongoose": "^6.0.12"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "<rootDir>/testconfig.js"
+    ]
   }
 }

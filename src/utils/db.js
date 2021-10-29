@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const connect = (url) => {
-  return mongoose.connect(url, { useNewUrlParser: true });
+const connect = async (url) => {
+  return await mongoose.connect(url, { useNewUrlParser: true });
 };
 
 const buildConnectionString = (protocol, host, port, name) => {
@@ -16,4 +16,21 @@ async function removeAllCollections() {
   }
 }
 
-module.exports = { connect, buildConnectionString, removeAllCollections };
+async function dropAllCollections() {
+  const collections = Object.keys(mongoose.connection.collection);
+  for (const collectionName of collections) {
+    try {
+      collection = mongoose.connection.collections[collectionName];
+      await collection.drop();
+    } catch (ex) {
+      console.error(ex.message);
+    }
+  }
+}
+
+module.exports = {
+  connect,
+  buildConnectionString,
+  removeAllCollections,
+  dropAllCollections,
+};

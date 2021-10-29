@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const post = new Schema({
   title: {
     type: String,
+    required: true,
   },
   condition: String,
   frameSize: {
@@ -33,6 +34,6 @@ const post = new Schema({
   description: String,
 });
 
-const Post = mongoose.model('post', post);
+const Post = mongoose.model('Post', post);
 
 module.exports = { Post };
