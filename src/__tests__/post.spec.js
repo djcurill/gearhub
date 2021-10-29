@@ -12,4 +12,11 @@ describe('bike post schema', () => {
       expect(e).toBeTruthy();
     }
   });
+
+  test('', () => {});
+
+  test('no items in database', async () => {
+    const result = await Post.find({}).exec();
+    expect(result.length).toBe(0);
+  });
 });

@@ -6,11 +6,15 @@ const post = new Schema({
     type: String,
     required: true,
   },
-  condition: String,
+  condition: {
+    type: String,
+    required: true,
+  },
   frameSize: {
     type: String,
     enum: ['S', 'M', 'L', 'XL'],
     message: '{VALUE} is not a supported frame size',
+    required: true,
   },
   frontTravel: {
     type: Number,

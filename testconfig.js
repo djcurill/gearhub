@@ -22,5 +22,6 @@ afterEach(async () => {
 // notify jest we are done all tests
 afterAll(async () => {
   await dropAllCollections();
+  await mongoose.connection.db.dropDatabase();
   await mongoose.connection.close();
 });
